@@ -9,12 +9,14 @@
   :description "Spec printer that consumes output from dpANS-parser"
   :author "Dmitry Petrov <dpetroff@gmail.com>"
   :license "Public Domain"
-  :depends-on (#:dpans-parser)
+  :depends-on (#:dpans-parser
+               #:cl-who)
   :serial t
   :components ((:module "src"
                 :components
                 (
                  (:file "package")
+                 (:file "single-file")
                  (:file "dpans-printer")
                  )))
   :in-order-to ((test-op (test-op dpans-printer-test))))
