@@ -5,5 +5,5 @@
   (:export #:print-spec-to-file))
 
 (defpackage #:dpans-printer.single-file
-  (:use #:cl #:dpans-parser :cl-who))
+  (:use #:cl #:dpans-parser))
 
