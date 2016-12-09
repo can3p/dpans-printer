@@ -9,7 +9,8 @@
   :description "Spec printer that consumes output from dpANS-parser"
   :author "Dmitry Petrov <dpetroff@gmail.com>"
   :license "Public Domain"
-  :depends-on (#:dpans-parser)
+  :depends-on (#:dpans-parser
+               #:cl-xml-gen)
   :serial t
   :components ((:module "src"
                 :components
