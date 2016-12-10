@@ -11,13 +11,16 @@
 (defmethod print-element ((element <document>))
   `(:html nil
           (:head nil
-                 (:title nil "Common lisp spec"))
+                 (:title nil "Common lisp spec")
+                 (:link (:rel "stylesheet" :href "static/style.css"))
+                 )
           (:body nil
                  ,(mapcar #'print-element (children element)))))
 
 (defmethod print-element ((element <container-block-element>))
   (let* ((tag-name (name element))
          (tag (cond
+                ((string= tag-name "chapter") :h1)
                 ((string= tag-name "section") :h2)
                 ((string= tag-name "subsection") :h3)
                 ((string= tag-name "subsubsection") :h4)

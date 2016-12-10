@@ -4,15 +4,29 @@
 exec ros -Q -- $0 "$@"
 |#
 (progn ;;init forms
-  #+quicklisp (ql:quickload '(:dpans-printer) :silent t)
+  #+quicklisp (ql:quickload '(:dpans-printer :clack :cl-fad) :silent t)
   )
 
 (defpackage :ros.script.dpans-parser.3690054979
-  (:use :cl :dpans-printer))
+  (:use :cl :dpans-printer :clack :lack.builder))
 (in-package :ros.script.dpans-parser.3690054979)
 
+(defun serve-spec ()
+  (let* ((asdf-location (asdf:system-source-file :dpans-printer))
+         (static-dir (cl-fad:merge-pathnames-as-directory asdf-location #P"static/")))
+    (clackup
+     (lack:builder
+      (:static
+       :path "/static/"
+       :root static-dir)
+      #'(lambda (req)
+          (declare (ignore req))
+          `(200 (:content-type "text/html") (,(print-spec)))))
+      :use-thread nil)))
+
 (defun main (&rest argv)
-  (declare (ignorable argv))
-  (print-spec-to-file))
+  (if (string= (car argv) "serve")
+      (serve-spec)
+      (print-spec-to-file)))
 
 ;;; vim: set ft=lisp lisp:
