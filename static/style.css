@@ -2,3 +2,48 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 1024px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 35px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.chapter,
+.section,
+.subsection,
+.subsubsection,
+.subsubsubsection,
+.subsubsubsubsection {
+    margin: 20px 0;
+}
